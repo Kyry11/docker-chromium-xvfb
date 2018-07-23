@@ -1,4 +1,4 @@
-FROM markadams/chromium-xvfb
+FROM kyryll/chromium-xvfb
 
 WORKDIR /usr/src/app
 ENV NODE_VERSION=9.8.0-1
