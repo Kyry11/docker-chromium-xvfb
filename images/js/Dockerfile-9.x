@@ -1,7 +1,11 @@
-FROM markadams/chromium-xvfb-js
+FROM markadams/chromium-xvfb
 
 WORKDIR /usr/src/app
+ENV NODE_VERSION=9.8.0-1
 
-RUN apt-get install -y git
+RUN apt-get install -y git gpg \
+    && curl -sL https://deb.nodesource.com/setup_9.x | bash - \
+    && apt-get install -y nodejs=${NODE_VERSION}nodesource1 gpg \
+    && rm -rf /var/lib/apt/lists
 
-CMD git --version
+CMD npm test
